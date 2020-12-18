@@ -1,0 +1,38 @@
+<table>
+    <thead>
+    <tr>
+        <th>Plate</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of vehicles">
+        <th>
+            {{row?.plate}}
+        </th>
+        <th>
+            {{row?.model}}
+        </th>
+        <th>
+            {{row?.manufacturer}}
+        </th>
+        <th>
+            {{row?.status}}
+        </th>
+        <th>
+            <img style="height: 12px" src="assets/icons/edit-regular.svg">
+            <img style="height: 12px" src="assets/icons/trash-alt-regular.svg">
+        </th>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <img style="height: 12px" src="assets/icons/arrow-left-solid.svg">
+
+    <span *ngFor="let number of [0,1,2,3,4]" (click)="getVehicles(number + 1)">{{number + 1}}</span>
+
+    <img style="height: 12px" src="assets/icons/arrow-right-solid.svg">
+</div>
