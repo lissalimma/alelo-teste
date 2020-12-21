@@ -1,38 +1,58 @@
-<table>
-    <thead>
-    <tr>
-        <th>Plate</th>
-        <th>Model</th>
-        <th>Manufacturer</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let row of vehicles">
-        <th>
-            {{row?.plate}}
-        </th>
-        <th>
-            {{row?.model}}
-        </th>
-        <th>
-            {{row?.manufacturer}}
-        </th>
-        <th>
-            {{row?.status}}
-        </th>
-        <th>
-            <img style="height: 12px" src="assets/icons/edit-regular.svg">
-            <img style="height: 12px" src="assets/icons/trash-alt-regular.svg">
-        </th>
-    </tr>
-    </tbody>
-</table>
-<div>
-    <img style="height: 12px" src="assets/icons/arrow-left-solid.svg">
+<div class="card">
+    <h3>Vehicle Management</h3>
+    <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+        it to make a type specimen book.</h6>
 
-    <span *ngFor="let number of [0,1,2,3,4]" (click)="getVehicles(number + 1)">{{number + 1}}</span>
 
-    <img style="height: 12px" src="assets/icons/arrow-right-solid.svg">
+
+    <div class="search">
+        <input type="email" placeholder="place search" [(ngModel)]="plate" />
+        <img src="assets/icons/search-solid.svg" (click)="getWithPlate()">
+
+        <button [routerLink]="['vehicles/create']">Add Vehicle</button>
+
+    </div>
+
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>Plate</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of vehicles">
+                <th>
+                    {{row.plate}}
+                </th>
+                <th>
+                    {{row.model}}
+                </th>
+                <th>
+                    {{row.manufacturer}}
+                </th>
+                <th class="status">
+                    <div class="badge" [ngClass]="row.status == true ? 'badge-success' : 'badge-pink'"></div>
+                    <p>{{row.status == true ?
+                        'Active' : 'Inactive'}}</p>
+                </th>
+                <th class="action">
+                    <img src="assets/icons/edit-regular.svg" [routerLink]="['vehicles/create', row.id]">
+                    <img src="assets/icons/trash-alt-regular.svg" (click)="openDialog(row.id)">
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <div class="paginator">
+        <a *ngFor="let number of [].constructor(paginatorLength); let i = index"
+            [ngClass]="page == (i + 1) ? 'page-active': ''" (click)="getVehicles(i + 1)">{{i + 1}}</a>
+    </div>
+
 </div>
+<ngx-spinner bdColor="rgba(255,255,255,0.8)"
+size="medium"
+color="#fff"><p>Loading...</p></ngx-spinner>

@@ -1,1 +1,446 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap");
+
+// theme
+$pink: #bc2f6c;
+$secoblackndary: #282828;
+$yellow: #bdd654;
+$green: #0e7f61;
+
+// suport
+$success: #bdd654;
+$danger: #bc2f6c;
+$info: #43a4e6;
+$warning: #facc05;
+$neutral: #555550;
+$white: #ffffff;
+
+// espacamentos
+$e-36: 36px;
+$e-32: 32px;
+$e-24: 24px;
+$e-16: 16px;
+$e-8: 8px;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: "Open Sans", sans-serif;
+    color: $neutral;
+    font-weight: 400;
+
+    h2,
+    h3 {
+        margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 800;
+    }
+
+    h6{
+        text-align: justify;
+    }
+
+    ul {
+        margin: 0px;
+        padding: 0px;
+
+        li {
+            list-style-type: none;
+            display: flex;
+
+            a {
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+
+    button {
+        width: 115px;
+        padding: $e-8;
+        background-color: $white;
+        border-radius: $e-8;
+        border: none;
+        color: $neutral;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+
+    .confirm {
+        margin-left: 25px;
+        background-color: $pink;
+        color: $white;
+    }
+
+    .icon {
+        height: 18px;
+        color: $neutral;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        background-color: #f7f7f7;
+        border-radius: 20px;
+
+        .search {
+            margin-bottom: 32px;
+            img {
+                height: 24px;
+                cursor: pointer;
+            }
+
+            input {
+                border: none;
+                border-bottom: solid 1px #a3a3a3;
+                background-color: transparent;
+                width: 40%;
+                outline: none;
+            }
+
+            button {
+                float: right;
+                background-color: $pink;
+                color: $white;
+                cursor: pointer;
+            }
+        }
+
+        table {
+            max-width: 100%;
+            width: 100%;
+            font-size: 12px;
+            border-collapse: collapse;
+            border-radius: 1em;
+            overflow: hidden;
+
+            thead {
+                background-color: $info;
+                th {
+                    color: $white;
+                    font-weight: 800;
+                    padding: 8px;
+                }
+            }
+
+            th {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 8px;
+                img {
+                    height: 16px;
+                    margin: 0 6px;
+                    cursor: pointer;
+                }
+            }
+
+            tr:nth-child(even) {
+                background-color: #ededed;
+            }
+
+            .status {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    margin: 0;
+                }
+
+                .badge {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    margin: 0 8px;
+                }
+
+                .badge-pink {
+                    background-color: $pink;
+                }
+
+                .badge-success {
+                    background-color: $green;
+                }
+            }
+        }
+
+        form {
+            max-width: 100%;
+            div {
+                margin: $e-24 0;
+
+                label {
+                    margin-bottom: $e-16;
+                    font-weight: 800;
+                    text-align: left;
+                }
+
+                input {
+                    border: none;
+                    background-color: transparent;
+                    border-bottom: solid 1px #a3a3a3;
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+    .active-route {
+        background: #ededed;
+        border-radius: 20px;
+    }
+
+    .paginator {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        a {
+            text-decoration: none;
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        img {
+            height: 16px;
+            margin: 8px;
+        }
+
+        .page-active {
+            font-weight: 800;
+        }
+    }
+
+    .modal-dialog {
+        div {
+            display: flex;
+            justify-content: center;
+            button {
+                background-color: transparent;
+                font-size: 16px;
+                padding: 8px 16px;
+                border: none;
+                border-radius: 10px;
+            }
+
+            button:hover {
+                background-color: #ededed;
+            }
+
+            .confirm {
+                color: $pink;
+            }
+        }
+    }
+
+    .container-create {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+
+
+            .form-radio-div {
+                display: flex;
+                    input {
+                        height: $e-24;
+                        width: 20px;
+                        margin: auto $e-16 auto 0;
+                    }
+
+                    label {
+                        font-size: 13px;
+                        font-weight: 400;
+                        margin: auto $e-24 auto 0;
+                    }
+            }
+
+            .footer-button-form {
+                margin-top: $e-36;
+            }
+        
+    }
+
+    
+}
+
+.notif-success{
+    background-color: #ffffff;
+}
+
+
+ngx-spinner{
+
+    p{
+        font-size: 20px; color: #515151;
+    }
+}
+
+// desktop
+@media (min-width: 421px) {
+    .container-fluid {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+
+        .sidebar {
+            margin: $e-16;
+            width: 20%;
+            max-width: 20%;
+
+            h1 {
+                text-align: center;
+            }
+
+            div {
+                display: flex;
+
+                img {
+                    margin: auto;
+                }
+            }
+        }
+        .content {
+            padding: $e-24 $e-36;
+            margin: auto;
+            width: 80%;
+            max-width: 80%;
+        }
+
+        li {
+            a {
+                width: 100%;
+                padding: 0 16px;
+                .icon {
+                    margin-right: $e-36;
+                }
+            }
+        }
+
+        .card {
+            padding: $e-16;
+        }
+
+        .container-create{
+            padding: 0 $e-24;
+            .form-div {
+                width: 70%;
+                max-width: 70%;
+    
+                .img-div {
+                    width: 30%;
+                    max-width: 30%;
+                    display: flex;
+        
+                    img {
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+// mobile
+@media (max-width: 420px) {
+    .container-fluid {
+        display: grid;
+        height: 100%;
+        padding: $e-8 $e-8;
+
+        .sidebar {
+            text-align: center;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            margin: 36px 0;
+            li {
+                width: fit-content;
+                a {
+                    padding: 16px;
+                    p {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .card {
+            padding: $e-16;
+
+            table {
+                th {
+                    max-width: 50px;
+                    padding: 8px;
+                    white-space: nowrap;
+                    img {
+                        margin: 0 6px;
+                    }
+                }
+
+                .action {
+                    padding: 0;
+                }
+            }
+
+            .status {
+                p {
+                    display: none;
+                }
+            }
+        }
+
+        .icon {
+            margin: 0 8px;
+        }
+
+        .form-div {
+            width: 100%;
+            max-width: 100%;
+
+            input {
+                width: 100%;
+            }
+
+            #active,
+            #inactive {
+                width: 50%;
+            }
+
+            button {
+                float: left;                
+            }
+        
+            .confirm {
+                float: right;
+            }
+
+        }
+
+        .img-div{
+            display: none;
+        }
+    }
+}

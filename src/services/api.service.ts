@@ -13,23 +13,31 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getAllVehicles(): Observable<any>{
+    return this.http.get(`${environment.api}/vehicle`);
+  }
+
   getVehicles(page, limit): Observable<any>{
-    return this.http.get(`${environment.api}/vehicle?page=${page}&limit=${limit}`).pipe(take(1));
+    return this.http.get(`${environment.api}/vehicle?page=${page}&limit=${limit}`);
+  }
+
+  getVehicleById(id): Observable<any>{
+    return this.http.get(`${environment.api}/vehicle/${id}`);
   }
 
   getWithPlate(filter): Observable<any>{
-    return this.http.get(`${environment.api}/vehicle?filter=${filter}`).pipe(take(1));
+    return this.http.get(`${environment.api}/vehicle?filter=${filter}`);
   }
 
   delete(id): Observable<any>{
-    return this.http.delete(`${environment.api}/vehicle/${id}`).pipe(take(1));
+    return this.http.delete(`${environment.api}/vehicle/${id}`);
   }
 
   create(vehicle): Observable<any>{
-    return this.http.post(`${environment.api}/vehicle`, vehicle).pipe(take(1));
+    return this.http.post(`${environment.api}/vehicle`, vehicle);
   }
 
-  update(id, vehicle): Observable<any>{
-    return this.http.put(`${environment.api}/vehicle/${id}`, vehicle).pipe(take(1));
+  update(vehicle): Observable<any>{
+    return this.http.put(`${environment.api}/vehicle/${vehicle.id}`, vehicle);
   }
 }

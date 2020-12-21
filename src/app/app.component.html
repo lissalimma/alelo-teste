@@ -1,8 +1,18 @@
-<img src="assets/images/alelo-logo.png">
-<h2>Alelo Frota</h2>
-<ul>
-    <li><img style="height: 12px" src="assets/icons/border-all-solid.svg"> Dashboard</li>
-    <li><img style="height: 12px" src="assets/icons/car-side-solid.svg"> Vehicle</li>
-    <li><img style="height: 12px" src="assets/icons/chart-bar-solid.svg"> Reports</li>
-</ul>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+    <div class="sidebar">
+        <div>
+            <img src="assets/images/alelo-logo.png">
+        </div>
+        <h1>Alelo Frota</h1>
+        <ul>
+            <li><a href="#"><img class="icon" src="assets/icons/border-all-solid.svg"> <p>Dashboard</p></a></li>
+            <li><a routerLinkActive="active-route"
+                routerLink="/vehicles"><img class="icon" src="assets/icons/car-side-solid.svg"> <p>Vehicle</p></a></li>
+            <li><a href="#"><img class="icon" src="assets/icons/chart-bar-solid.svg"> <p>Reports</p></a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

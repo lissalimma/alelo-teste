@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {VehiclesModule} from "../pages/vehicles/vehicles.module";
 import {HttpClientModule} from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
       VehiclesModule,
-      HttpClientModule
+      HttpClientModule,
+      BrowserAnimationsModule,
+      MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

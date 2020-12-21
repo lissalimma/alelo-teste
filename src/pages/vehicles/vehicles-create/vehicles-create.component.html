@@ -1,1 +1,52 @@
-<p>vehicles-create works!</p>
+<div class="card">
+    <div class="container-create">
+        <div class="form-div">
+            <h2>{{form.value.id ? 'Update' : 'Create'}} Vehicle</h2>
+            <form [formGroup]="form">
+                <div>
+                    <label>Plate {{form.value.id ? '(disabled)' : ''}}</label><br>
+                    <input type="text" formControlName="plate" [attr.disabled]="form.value.id ? '' : null" />
+                </div>
+
+                <div>
+                    <label>Model</label><br>
+                    <input type="text" formControlName="model" />
+                </div>
+
+                <div>
+                    <label>Manufacturer</label><br>
+                    <input type="text" formControlName="manufacturer" />
+                </div>
+
+                <div>
+                    <label>Color</label><br>
+                    <input type="text" formControlName="color" />
+                </div>
+
+                <div>
+                    <label>Status</label>
+                    <div class="form-radio-div">
+                        <input type="radio" id="active" name="status" formControlName="status" [value]="true"
+                            [checked]="form.value.status" /><label>Active</label>
+                        <input type="radio" id="inactive" name="status" formControlName="status" [value]="false"
+                            [checked]="!form.value.status" /><label>Inactive</label>
+                    </div>
+                </div>
+
+                <div class="footer-button-form">
+                    <button (click)="form.reset()">Reset All</button>
+                    <button class="confirm" (click)="form.value.id ? update() : save()">Save</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="img-div">
+            <img src="assets/images/car.png" width="150" height="150">
+        </div>
+    </div>
+
+
+</div>
+<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" color = "#fff">
+    <p>Loading...</p>
+</ngx-spinner>
