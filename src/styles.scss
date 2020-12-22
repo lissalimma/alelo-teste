@@ -61,10 +61,27 @@ ngx-spinner {
   }
 }
 
+.toast-container * {
+  color: $white;
+}
+
 * {
   font-family: "Open Sans", sans-serif;
   color: $b-3;
   font-weight: 400;
+
+  @mixin radius($radius: 10px) {
+    border-radius: $radius;
+  }
+
+  %button{
+    width: 115px;
+    padding: $e-8;
+    border-radius: $e-8;
+    border: none;
+    box-shadow: $e-0 $e-4 $e-8 $e-0 $b-3;
+    cursor: pointer;
+  }
 
   .sidebar {
     h1 {
@@ -97,14 +114,13 @@ ngx-spinner {
 
         .active-route {
           background: $w-2;
-          border-radius: 10px;
+          @include radius;
         }
       }
     }
   }
 
   .modal-dialog {
-
     h3 {
       font-weight: 800;
       margin-top: $e-0;
@@ -119,7 +135,7 @@ ngx-spinner {
         font-size: $fs-18;
         padding: $e-8 $e-16;
         border: none;
-        border-radius: 10px;
+        @include radius;
       }
 
       button:hover {
@@ -136,8 +152,7 @@ ngx-spinner {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     background-color: $w-1;
-    border-radius: 20px;
-    z-index: 800;
+    @include radius(20px);
 
     h3 {
       margin-top: $e-0;
@@ -165,14 +180,9 @@ ngx-spinner {
       }
 
       button {
-        width: 115px;
-        padding: $e-8;
+        @extend %button;
         background-color: $pink;
-        border-radius: $e-8;
-        border: none;
         color: $white;
-        box-shadow: $e-0 $e-4 $e-8 $e-0 $b-3;
-        cursor: pointer;
         float: right;
       }
     }
@@ -305,22 +315,50 @@ ngx-spinner {
         margin-top: $e-36;
 
         button {
-          width: 115px;
-          padding: $e-8;
-          background-color: $white;
-          border-radius: $e-8;
-          border: none;
-          color: $b-3;
-          box-shadow: $e-0 $e-4 $e-8 $e-0 $b-3;
-          cursor: pointer;
+         @extend %button;
+         background-color: $white;
+         color: $b-3;
         }
-        // ver se pode colocar o confirm dentro de button e se sim, aplicar aos demais tb
+
         .confirm {
           margin-left: $e-24;
           background-color: $pink;
           color: $white;
         }
       }
+    }
+
+    #modal{
+      display: none;
+    }
+
+    %positions{
+      top: $e-0;
+      right: $e-0;
+      bottom: $e-0;
+      left: $e-0;
+    }
+
+    .mmodal {
+      z-index: 1000;
+      display: flex;
+      position: fixed;
+      @extend %positions;
+      @include radius;
+    }
+    .mmodal-body {
+      margin: auto;
+      background: #fff;
+      padding: $e-24;
+      @include radius;
+      width: 300px;
+    }
+    .mmodal-background {
+      z-index: 900;
+      position: fixed;
+      @extend %positions;
+      background-color: $b-3;
+      opacity: 0.75;
     }
   }
 }
@@ -488,5 +526,3 @@ ngx-spinner {
     }
   }
 }
-
-

@@ -1,10 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { ApiService } from "../../../services/api.service";
-import { ToastrService } from 'src/services/toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
-import { AppComponent } from 'src/app/app.component';
-import { VehiclesDeleteComponent } from '../vehicles-delete/vehicles-delete.component';
+import { ToastrService } from 'ngx-toastr';
 
 export interface Vehicle {
   plate: string,
@@ -25,16 +23,13 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
   page: number = 1;
   paginatorLength: any = [];
   subscription: Subscription[] = [];
+  deleteId: number;
 
 
-  constructor(private api: ApiService, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
+  constructor(private api: ApiService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getVehicles(this.page);
-  }
-
-  showDialog(id) {
-    document.getElementById("modal").style.display = "block";
   }
 
   //a api que busca os veiculos de forma paginada nao retorna a quantidade de veiculos no total,
@@ -44,7 +39,7 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
       this.calculatePaginator(response);
       this.spinner.hide();
     }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
+      this.toastr.error("Something Went Wrong!")
     }));
   }
 
@@ -68,7 +63,7 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
       this.vehicles = response;
       this.getAllVehiclesLength();
     }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
+      this.toastr.error("Something Went Wrong!")
     }));
   }
 
@@ -80,7 +75,7 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
         this.vehicles = response;
         this.spinner.hide();
       }, error => {
-        this.toastr.openSnackBar('Something Went Wrong!');
+        this.toastr.error("Something Went Wrong!")
       }));
     } else {
       this.getVehicles(1);
@@ -88,17 +83,10 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
 
   }
 
-  delete(id: number): void {
-    this.spinner.show();
-    this.subscription.push(this.api.delete(id).subscribe((response: any) => {
-      this.toastr.openSnackBar('Vehicle Successfully Deleted!');
-      this.spinner.hide();
-      this.getVehicles(1);
-    }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
-    }));
+  showDialog(id) {
+    this.deleteId = id;
+    document.getElementById("modal").style.display = "block";
   }
-
 
   ngOnDestroy(): void {
     this.subscription.map(s => s.unsubscribe);
