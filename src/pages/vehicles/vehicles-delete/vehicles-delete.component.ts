@@ -1,22 +1,32 @@
-import { Component, Inject, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, ElementRef, Inject, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-vehicles-delete',
   templateUrl: './vehicles-delete.component.html',
-  styleUrls: ['./vehicles-delete.component.scss']
+  styleUrls: ['./vehicles-delete.component.scss'],
+  template: `
+        <div class="mmodal">
+            <div class="mmodal-body">
+                <ng-content></ng-content>
+            </div>
+        </div>
+        <div class="mmodal-background"></div>
+    `,
 })
 export class VehiclesDeleteComponent implements OnInit {
 
 
-  constructor(public dialogRef: MatDialogRef<VehiclesDeleteComponent>) { }
+  constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
+    this.el.nativeElement.addEventListener('click', () => {
+      this.close(false)
+    })
   }
 
-  delete(boolean) {
-    this.dialogRef.close({delete: boolean});
+  close(boolean) {
+    this.el.nativeElement.classList.remove('sshow')
+    this.el.nativeElement.classList.add('hhidden')
   }
 
 }

@@ -56,25 +56,29 @@ export class VehiclesCreateComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    this.spinner.show();
-    this.subscription.push(this.api.create(this.form.value).subscribe((response: any) => {
-      this.toastr.openSnackBar('Vehicle Inserted Successfully!')
-      this.router.navigate(['']);
-      this.spinner.hide();
-    }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
-    }));
+    if (this.form.valid) {
+      this.spinner.show();
+      this.subscription.push(this.api.create(this.form.value).subscribe((response: any) => {
+        this.toastr.openSnackBar('Vehicle Inserted Successfully!')
+        this.router.navigate(['']);
+        this.spinner.hide();
+      }, error => {
+        this.toastr.openSnackBar('Something Went Wrong!');
+      }));
+    }
   }
 
   update(): void {
-    this.spinner.show();
-    this.subscription.push(this.api.update(this.form.value).subscribe((response: any) => {
-      this.toastr.openSnackBar('Vehicle Successfully Changed!');
-      this.router.navigate(['']);
-      this.spinner.hide();
-    }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
-    }));
+    if (this.form.valid) {
+      this.spinner.show();
+      this.subscription.push(this.api.update(this.form.value).subscribe((response: any) => {
+        this.toastr.openSnackBar('Vehicle Successfully Changed!');
+        this.router.navigate(['']);
+        this.spinner.hide();
+      }, error => {
+        this.toastr.openSnackBar('Something Went Wrong!');
+      }));
+    }
   }
 
   ngOnDestroy(): void {

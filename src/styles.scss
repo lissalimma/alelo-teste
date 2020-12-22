@@ -6,7 +6,7 @@ $pink: #bc2f6c;
 $dark: #282828;
 $yellow: #bdd654;
 $green: #0e7f61;
-$lemon: #BDD654;
+$lemon: #bdd654;
 
 // suporte
 $success: #bdd654;
@@ -19,11 +19,11 @@ $black: #000000;
 $b-1: #282828;
 $b-2: #555550;
 $b-3: #888888;
-$b-4: #A3A3A3;
-$grey: #C0C0C0;
-$w-3: #DDDDDD;
-$w-2: #EDEDED;
-$w-1: #F7F7F7;
+$b-4: #a3a3a3;
+$grey: #c0c0c0;
+$w-3: #dddddd;
+$w-2: #ededed;
+$w-1: #f7f7f7;
 $white: #ffffff;
 
 // espacamentos
@@ -35,7 +35,7 @@ $e-8: 8px;
 $e-4: 4px;
 $e-0: 0px;
 
-// fonte
+// fontes
 $fs-10: 10px;
 $fs-12: 12px;
 $fs-14: 14px;
@@ -51,6 +51,7 @@ body {
 
 body {
   margin: 0;
+  z-index: 1100;
 }
 
 ngx-spinner {
@@ -64,11 +65,8 @@ ngx-spinner {
   font-family: "Open Sans", sans-serif;
   color: $b-3;
   font-weight: 400;
-  font-size: $fs-14;
 
-
-
-  .sidebar{
+  .sidebar {
     h1 {
       font-weight: 800;
     }
@@ -84,35 +82,41 @@ ngx-spinner {
         a {
           text-decoration: none;
           display: flex;
-          justify-content: center;
           align-items: center;
 
           .icon {
             height: 18px;
-            color: $neutral;
+            color: $w-2;
+            margin-left: $e-24;
           }
 
           p {
             font-weight: 900;
           }
         }
-// ver se aplica aqui mesmo
+
         .active-route {
-          background: #ededed;
-          border-radius: 20px;
+          background: $w-2;
+          border-radius: 10px;
         }
       }
     }
   }
 
   .modal-dialog {
+
+    h3 {
+      font-weight: 800;
+      margin-top: $e-0;
+    }
+
     div {
       display: flex;
       justify-content: center;
 
       button {
         background-color: transparent;
-        font-size: $fs-14;
+        font-size: $fs-18;
         padding: $e-8 $e-16;
         border: none;
         border-radius: 10px;
@@ -128,15 +132,16 @@ ngx-spinner {
     }
   }
 
-  .card{
-
+  .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    background-color: #f7f7f7;
+    background-color: $w-1;
     border-radius: 20px;
+    z-index: 800;
 
     h3 {
       margin-top: $e-0;
+      font-weight: 800;
     }
 
     h6 {
@@ -144,7 +149,7 @@ ngx-spinner {
     }
 
     .search {
-      margin-bottom: 32px;
+      margin-bottom: $e-32;
 
       img {
         height: 24px;
@@ -160,14 +165,19 @@ ngx-spinner {
       }
 
       button {
-        float: right;
+        width: 115px;
+        padding: $e-8;
         background-color: $pink;
+        border-radius: $e-8;
+        border: none;
         color: $white;
+        box-shadow: $e-0 $e-4 $e-8 $e-0 $b-3;
         cursor: pointer;
+        float: right;
       }
     }
 
-    table{
+    table {
       max-width: 100%;
       width: 100%;
       font-size: $fs-12;
@@ -181,18 +191,18 @@ ngx-spinner {
         th {
           color: $white;
           font-weight: 800;
-          padding: $e-8;
+          padding: $e-4;
         }
       }
 
       tr:nth-child(even) {
-        background-color: #ededed;
+        background-color: $w-2;
       }
 
       th {
         overflow: hidden;
         text-overflow: ellipsis;
-        padding: $e-8;
+        padding: $e-4;
 
         img {
           height: 16px;
@@ -225,7 +235,6 @@ ngx-spinner {
           background-color: $green;
         }
       }
-
     }
 
     .paginator {
@@ -235,13 +244,13 @@ ngx-spinner {
 
       a {
         text-decoration: none;
-        margin: 8px;
+        margin: $e-8;
         cursor: pointer;
       }
 
       img {
         height: 16px;
-        margin: 8px;
+        margin: $e-8;
       }
 
       .page-active {
@@ -264,7 +273,7 @@ ngx-spinner {
         input {
           border: none;
           background-color: transparent;
-          border-bottom: solid 1px #a3a3a3;
+          border-bottom: solid 1px $b-3;
           width: 50%;
         }
       }
@@ -275,7 +284,6 @@ ngx-spinner {
       height: 100%;
       width: 100%;
       max-width: 100%;
-
 
       .form-radio-div {
         display: flex;
@@ -302,22 +310,19 @@ ngx-spinner {
           background-color: $white;
           border-radius: $e-8;
           border: none;
-          color: $b3;
-          box-shadow: $e-0 $e-4 $e-8 $e-0 $dark;
+          color: $b-3;
+          box-shadow: $e-0 $e-4 $e-8 $e-0 $b-3;
           cursor: pointer;
         }
-// ver se pode colocar o confirm dentro de button e se sim, aplicar aos demais tb
+        // ver se pode colocar o confirm dentro de button e se sim, aplicar aos demais tb
         .confirm {
           margin-left: $e-24;
           background-color: $pink;
           color: $white;
         }
       }
-
     }
-
   }
-
 }
 
 // desktop
@@ -327,6 +332,10 @@ ngx-spinner {
     height: 100%;
     width: 100%;
     max-width: 100%;
+
+    .nmmodal {
+      margin: auto;
+    }
 
     .sidebar {
       margin: $e-16;
@@ -344,6 +353,17 @@ ngx-spinner {
           margin: auto;
         }
       }
+
+      li {
+        a {
+          width: 100%;
+          padding: 0 16px;
+
+          .icon {
+            margin-right: $e-36;
+          }
+        }
+      }
     }
 
     .content {
@@ -353,41 +373,25 @@ ngx-spinner {
       max-width: 80%;
     }
 
-    li {
-      a {
-        width: 100%;
-        padding: 0 16px;
-
-        .icon {
-          margin-right: $e-36;
-        }
-      }
-    }
-
     .card {
-      padding: $e-16;
-    }
+      padding: $e-32;
 
-    .container-create {
-      padding: 0 $e-24;
-
-      .form-div {
-        width: 70%;
-        max-width: 70%;
-
+      .container-create {
+        .form-div {
+          width: 70%;
+          max-width: 70%;
+        }
         .img-div {
           width: 30%;
           max-width: 30%;
           display: flex;
 
           img {
-            margin: 0 auto;
+            margin: $e-0 auto;
           }
         }
       }
     }
-
-
   }
 }
 
@@ -400,21 +404,25 @@ ngx-spinner {
 
     .sidebar {
       text-align: center;
-    }
 
-    ul {
-      display: flex;
-      justify-content: center;
-      margin: 36px 0;
+      ul {
+        display: flex;
+        justify-content: center;
+        margin: $e-36 $e-0;
 
-      li {
-        width: fit-content;
+        li {
+          width: fit-content;
 
-        a {
-          padding: 16px;
+          a {
+            padding: $e-16;
 
-          p {
-            display: none;
+            .icon {
+              margin: 0 8px;
+            }
+
+            p {
+              display: none;
+            }
           }
         }
       }
@@ -426,326 +434,59 @@ ngx-spinner {
       table {
         th {
           max-width: 50px;
-          padding: 8px;
+          padding: $e-8;
           white-space: nowrap;
 
           img {
-            margin: 0 6px;
+            margin: 0 $e-4;
           }
         }
 
         .action {
           padding: 0;
         }
-      }
 
-      .status {
-        p {
-          display: none;
+        .status {
+          p {
+            display: none;
+          }
         }
       }
     }
 
-    .icon {
-      margin: 0 8px;
-    }
-
-    .form-div {
-      width: 100%;
-      max-width: 100%;
-
-      input {
+    .container-create {
+      .form-div {
         width: 100%;
+        max-width: 100%;
+
+        input {
+          width: 100%;
+        }
+
+        #active,
+        #inactive {
+          width: 50%;
+        }
+
+        button {
+          float: left;
+        }
+
+        .confirm {
+          float: right;
+        }
+
+        .footer-button-form {
+          max-width: 100% !important;
+          width: 100%;
+        }
       }
 
-      #active,
-      #inactive {
-        width: 50%;
+      .img-div {
+        display: none;
       }
-
-      button {
-        float: left;
-      }
-
-      .confirm {
-        float: right;
-      }
-
-    }
-
-    .img-div {
-      display: none;
     }
   }
 }
-
-//
-//* {
-//  font-family: "Open Sans", sans-serif;
-//  color: $neutral;
-//  font-weight: 400;
-//
-//  h2,
-//  h3 {
-//    margin-top: 0;
-//  }
-//
-//  h1,
-//  h2,
-//  h3 {
-//    font-weight: 800;
-//  }
-//
-//  h6 {
-//    text-align: justify;
-//  }
-//
-//  ul {
-//    margin: 0px;
-//    padding: 0px;
-//
-//    li {
-//      list-style-type: none;
-//      display: flex;
-//
-//      a {
-//        text-decoration: none;
-//        display: flex;
-//        justify-content: center;
-//        align-items: center;
-//
-//        p {
-//          font-weight: 900;
-//        }
-//      }
-//    }
-//  }
-//
-//  button {
-//    width: 115px;
-//    padding: $e-8;
-//    background-color: $white;
-//    border-radius: $e-8;
-//    border: none;
-//    color: $neutral;
-//    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-//    cursor: pointer;
-//  }
-//
-//  .confirm {
-//    margin-left: 25px;
-//    background-color: $pink;
-//    color: $white;
-//  }
-//
-//  .icon {
-//    height: 18px;
-//    color: $neutral;
-//  }
-//
-//  .card {
-//    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-//    transition: 0.3s;
-//    background-color: #f7f7f7;
-//    border-radius: 20px;
-//
-//    .search {
-//      margin-bottom: 32px;
-//
-//      img {
-//        height: 24px;
-//        cursor: pointer;
-//      }
-//
-//      input {
-//        border: none;
-//        border-bottom: solid 1px #a3a3a3;
-//        background-color: transparent;
-//        width: 40%;
-//        outline: none;
-//      }
-//
-//      button {
-//        float: right;
-//        background-color: $pink;
-//        color: $white;
-//        cursor: pointer;
-//      }
-//    }
-//
-//    table {
-//      max-width: 100%;
-//      width: 100%;
-//      font-size: 12px;
-//      border-collapse: collapse;
-//      border-radius: 1em;
-//      overflow: hidden;
-//
-//      thead {
-//        background-color: $info;
-//
-//        th {
-//          color: $white;
-//          font-weight: 800;
-//          padding: 8px;
-//        }
-//      }
-//
-//      th {
-//        overflow: hidden;
-//        text-overflow: ellipsis;
-//        padding: 8px;
-//
-//        img {
-//          height: 16px;
-//          margin: 0 6px;
-//          cursor: pointer;
-//        }
-//      }
-//
-//      tr:nth-child(even) {
-//        background-color: #ededed;
-//      }
-//
-//      .status {
-//        display: flex;
-//        justify-content: center;
-//        align-items: center;
-//
-//        p {
-//          margin: 0;
-//        }
-//
-//        .badge {
-//          width: 16px;
-//          height: 16px;
-//          border-radius: 50%;
-//          margin: 0 8px;
-//        }
-//
-//        .badge-pink {
-//          background-color: $pink;
-//        }
-//
-//        .badge-success {
-//          background-color: $green;
-//        }
-//      }
-//    }
-//
-//    form {
-//      max-width: 100%;
-//
-//      div {
-//        margin: $e-24 0;
-//
-//        label {
-//          margin-bottom: $e-16;
-//          font-weight: 800;
-//          text-align: left;
-//        }
-//
-//        input {
-//          border: none;
-//          background-color: transparent;
-//          border-bottom: solid 1px #a3a3a3;
-//          width: 50%;
-//        }
-//      }
-//    }
-//  }
-//
-//  .active-route {
-//    background: #ededed;
-//    border-radius: 20px;
-//  }
-//
-//  .paginator {
-//    display: flex;
-//    align-items: center;
-//    justify-content: flex-end;
-//
-//    a {
-//      text-decoration: none;
-//      margin: 8px;
-//      cursor: pointer;
-//    }
-//
-//    img {
-//      height: 16px;
-//      margin: 8px;
-//    }
-//
-//    .page-active {
-//      font-weight: 800;
-//    }
-//  }
-//
-//  .modal-dialog {
-//    div {
-//      display: flex;
-//      justify-content: center;
-//
-//      button {
-//        background-color: transparent;
-//        font-size: 16px;
-//        padding: 8px 16px;
-//        border: none;
-//        border-radius: 10px;
-//      }
-//
-//      button:hover {
-//        background-color: #ededed;
-//      }
-//
-//      .confirm {
-//        color: $pink;
-//      }
-//    }
-//  }
-//
-//  .container-create {
-//    display: flex;
-//    height: 100%;
-//    width: 100%;
-//    max-width: 100%;
-//
-//
-//    .form-radio-div {
-//      display: flex;
-//
-//      input {
-//        height: $e-24;
-//        width: 20px;
-//        margin: auto $e-16 auto 0;
-//      }
-//
-//      label {
-//        font-size: 13px;
-//        font-weight: 400;
-//        margin: auto $e-24 auto 0;
-//      }
-//    }
-//
-//    .footer-button-form {
-//      margin-top: $e-36;
-//    }
-//
-//  }
-//
-//
-//}
-//
-//.notif-success {
-//  background-color: #ffffff;
-//}
-//
-//
-//ngx-spinner {
-//  p {
-//    font-size: 20px;
-//    color: #515151;
-//  }
-//}
 
 

@@ -42,7 +42,7 @@
                 </th>
                 <th class="action">
                     <img src="assets/icons/edit-regular.svg" [routerLink]="['vehicles/create', row.id]">
-                    <img src="assets/icons/trash-alt-regular.svg" (click)="openDialog(row.id)">
+                    <img src="assets/icons/trash-alt-regular.svg" (click)="showDialog(row.id)">
                 </th>
             </tr>
         </tbody>
@@ -51,8 +51,8 @@
         <a *ngFor="let number of [].constructor(paginatorLength); let i = index"
             [ngClass]="page == (i + 1) ? 'page-active': ''" (click)="getVehicles(i + 1)">{{i + 1}}</a>
     </div>
-
+    <app-vehicles-delete id="modal" style="display: none"></app-vehicles-delete>
 </div>
-<ngx-spinner bdColor="rgba(255,255,255,0.8)"
-size="medium"
-color="#fff"><p>Loading...</p></ngx-spinner>
+<ngx-spinner bdColor="rgba(255,255,255,0.8)" size="medium" color="#fff">
+    <p>Loading...</p>
+</ngx-spinner>

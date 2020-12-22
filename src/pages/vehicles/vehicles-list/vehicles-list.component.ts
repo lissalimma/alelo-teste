@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ApiService } from "../../../services/api.service";
-import { MatDialog } from '@angular/material/dialog';
-import { VehiclesDeleteComponent } from '../vehicles-delete/vehicles-delete.component';
 import { ToastrService } from 'src/services/toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
+import { AppComponent } from 'src/app/app.component';
+import { VehiclesDeleteComponent } from '../vehicles-delete/vehicles-delete.component';
 
 export interface Vehicle {
   plate: string,
@@ -26,12 +26,16 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
   paginatorLength: any = [];
   subscription: Subscription[] = [];
 
-  constructor(private api: ApiService, public dialog: MatDialog, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
+
+  constructor(private api: ApiService, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getVehicles(this.page);
   }
 
+  showDialog(id) {
+    document.getElementById("modal").style.display = "block";
+  }
 
   //a api que busca os veiculos de forma paginada nao retorna a quantidade de veiculos no total,
   //tornando necessário essa funcao
@@ -69,14 +73,19 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
   }
 
   getWithPlate(): void {
-    this.spinner.show();
-    this.subscription.push(this.api.getWithPlate(this.plate).subscribe((response: any) => {
-      this.calculatePaginator([]);
-      this.vehicles = response;
-      this.spinner.hide();
-    }, error => {
-      this.toastr.openSnackBar('Something Went Wrong!');
-    }));
+    if (this.plate.length > 0) {
+      this.spinner.show();
+      this.subscription.push(this.api.getWithPlate(this.plate).subscribe((response: any) => {
+        this.calculatePaginator([]);
+        this.vehicles = response;
+        this.spinner.hide();
+      }, error => {
+        this.toastr.openSnackBar('Something Went Wrong!');
+      }));
+    } else {
+      this.getVehicles(1);
+    }
+
   }
 
   delete(id: number): void {
@@ -90,20 +99,10 @@ export class VehiclesListComponent implements OnInit, OnDestroy {
     }));
   }
 
-  openDialog(id: number): void {
-    const dialogRef = this.dialog.open(VehiclesDeleteComponent, {
-      width: '450px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.delete) {
-        this.delete(id);
-      }
-    });
-  }
 
   ngOnDestroy(): void {
     this.subscription.map(s => s.unsubscribe);
   }
+
 
 }
